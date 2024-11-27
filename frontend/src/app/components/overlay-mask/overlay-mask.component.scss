@@ -1,0 +1,19 @@
+.overlay-mask{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    z-index: 2500;
+    overflow-y: scroll;
+    /* cursor: pointer; */
+}
+
+.overlay-mask > div{
+    z-index: 3000;
+}

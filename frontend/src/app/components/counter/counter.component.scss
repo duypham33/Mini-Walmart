@@ -1,0 +1,26 @@
+@use "/src/styles.scss" as *;
+
+// .counter {
+//     font-size: 3rem;
+//     font-weight: bold;
+//     color: #007bff;
+//     text-align: center;
+//     margin-top: 50px;
+//     transition: transform 0.5s ease-in-out;
+//   }
+  
+//   .counter span {
+//     display: inline-block;
+//   }
+
+span{
+    color: $main-neural-400;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.num{
+    color: $main-neural;
+    font-size: 16px;
+    font-weight: 500;
+}

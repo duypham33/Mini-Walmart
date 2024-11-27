@@ -1,0 +1,6 @@
+<div>
+    <ng-container *ngFor="let token of tokens">
+        <span *ngIf="!token.isNum">{{token.value}}</span>
+        <app-counter *ngIf="token.isNum" [text]="token.value" />
+    </ng-container>
+</div>

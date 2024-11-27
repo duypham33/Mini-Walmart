@@ -1,0 +1,201 @@
+@use "/src/styles.scss" as *;
+
+.orders-page{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        padding: 24px 0;
+        gap: 24px;
+    }
+
+    .btn{
+        color: $main-neural;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 10px;
+        border-radius: 18px;
+        border: 1px solid $main-neural;
+        cursor: pointer;
+        min-width: 80px;
+        background-color: $main-neural-100;
+        &:hover{
+            border: 2px solid $main-neural;
+        }
+    }
+
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span{
+            color: $main-neural;
+            font-size: 20px;
+            font-weight: 550;
+        }
+
+        .pages{
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+    }
+
+    .filters{
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        span{
+            cursor: pointer;
+            padding: 10px 14px;
+            border-radius: 18px;
+            background-color: $main-primary-200;
+            font-size: 14px;
+            min-width: 40px;
+            text-align: center;
+            &:hover{
+                color: $main-neural-100;
+                background-color: $main-primary-300;
+            }
+        }
+
+        .selected{
+            color: $main-neural-100;
+            background-color: $main-primary-300;
+        }
+    }
+
+    .order-list{
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        .order-card{
+            border: 2px solid $main-neural-200;
+            border-radius: 14px;
+            width: 50vw;
+            .top{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 18px 24px;
+                background-color: $main-primary-100;
+                border-top-left-radius: 14px;
+                border-top-right-radius: 14px;
+                .order-num{
+                    color: $main-neural-300;
+                    font-size: 14px;
+                    font-weight: 300;
+                }
+
+                .actions{
+                    display: flex;
+                    align-items: center;
+                    gap: 24px;
+                    .complete{
+                        color: $system-success;
+                        border: 1px solid $system-success;
+                        &:hover{
+                            color: $main-neural-100;
+                            background-color: $system-success;
+                            border: 2px solid $system-success;
+                            font-weight: 600;
+                        }
+                    }
+
+                    .cancel{
+                        color: $system-error;
+                        border: 1px solid $system-error;
+                        &:hover{
+                            color: $main-neural-100;
+                            background-color: $system-error;
+                            border: 2px solid $system-error;
+                            font-weight: 600;
+                        }
+                    }
+
+                    .view-detail{
+                        color: $main-primary-300;
+                        border: 1px solid $main-primary-300;
+                        &:hover{
+                            color: $main-neural-100;
+                            background-color: $main-primary-300;
+                            border: 2px solid $main-primary-300;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+
+            .info{
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                padding: 18px;
+
+                .order-img{
+                    width: 70px;
+                    height: 70px;
+                }
+
+                .status{
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    margin-bottom: 6px;
+                    img{
+                        width: 24px;
+                        height: 24px;
+                    }
+                    span{
+                        font-size: 14px;
+                        color: $main-neural-300;
+                    }
+                }
+
+                .date{
+                    display: flex;
+                    gap: 6px;
+                    span{
+                        font-size: 18px;
+                        color: $main-neural;
+                        font-weight: 500;
+                    }
+                    .user{
+                        color: $main-neural-300;
+                        margin-top: -10px;
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                }
+            }
+
+            .items{
+                display: flex;
+                flex-direction: column;
+                padding: 18px;
+                padding-top: 12px;
+                gap: 12px;
+                .numbers{
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    .total{
+                        color: $main-neural;
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
+                    .numitems{
+                        color: $main-neural-300;
+                    }
+                }
+                .summary{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 16px;
+                }
+            }
+        }
+    }
+}

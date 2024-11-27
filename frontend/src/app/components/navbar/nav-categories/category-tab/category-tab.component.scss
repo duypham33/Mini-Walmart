@@ -1,0 +1,22 @@
+@use "/src/styles.scss" as *;
+
+.category-tab{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    &:hover{
+        border: 1px solid $main-primary-400;
+    }
+    span{
+        font-size: 16px;
+        color: $main-primary;
+        font-weight: 500;
+    }
+}
+
+.selected{
+    border: 1px solid $main-primary-400;
+}

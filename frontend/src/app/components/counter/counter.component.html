@@ -1,0 +1,7 @@
+<!-- <div class="counter" [@countAnimation]>
+    <span class="counter" [@countAnimation]>{{ currentNumber | number:'1.2-2' }}</span>
+</div>
+   -->
+<span class="counter" [@countAnimation]>
+    {{check ? '$' : ''}}<span class="num">{{ checkDot ? (currentNumber | number:'1.2-2') :  (currentNumber | number:'1.0-0')}}</span>
+</span>

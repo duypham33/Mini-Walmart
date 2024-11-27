@@ -1,0 +1,29 @@
+<div class="nav-categories">
+    <div class="left-side">
+        <div (click)="toggleOpenCategory()">
+            <app-category-tab [iconUrl]="'assets/icons/general/blue_squares_ic.svg'" 
+            [text]="'Categories'" />
+        </div>
+        <app-category-tab [iconUrl]="'assets/icons/general/blue_circles_ic.svg'" [text]="'Services'" />
+    </div>
+    <div class="divider"></div>
+    <div class="right-side">
+        <span *ngFor="let b of bookmarks">{{b}}</span>
+    </div>
+
+    <div class="menu" *ngIf="openCategory && rootCategories.length > 0">
+        <div class="tab" *ngFor="let rootCat of rootCategories"  (click)="selectRoot(rootCat.id)"
+        [ngClass]="selectedRootId === rootCat.id ? 'selected' : ''">
+            <span>{{rootCat.name}}</span>
+        </div>
+    </div>
+    <div class="sub-categories" *ngIf="openCategory && rootCategories.length > 0 && categoryFamilies.length > 0">
+        <ng-container *ngFor="let cf of categoryFamilies">
+            <div class="sub-category" *ngIf="cf.children.length > 0">
+                <span class="header">{{cf.name}}</span>
+                <span class="cat" *ngFor="let c of cf.children" (click)="onNavigate(c.id)">{{c.name}}</span>
+            </div>
+        </ng-container>
+    </div>
+    <div class="mask" *ngIf="openCategory && rootCategories.length > 0"></div>
+</div>

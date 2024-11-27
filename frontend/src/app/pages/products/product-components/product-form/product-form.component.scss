@@ -1,0 +1,121 @@
+@use "/src/styles.scss" as *;
+
+.product-form{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $main-neural-200;
+    border-radius: 14px;
+    background-color: $main-neural-100;
+    margin: 20px 0;
+    // min-width: 60vw;
+    box-shadow: -5px -5px 30px 6px #0072dc3c, 5px 5px 30px 6px #0072dc3c;
+    .header{
+        padding: 18px 32px;
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 2px solid $main-neural-200;
+        color: $main-neural;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-top: 12px;
+        padding: 10px 48px;
+
+        .product-input{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            width: fit-content;
+            .field{
+                color: $main-neural;
+                font-weight: 500;
+                margin-left: 8px;
+            }
+
+            .input-wrapper{
+                border: none;
+                border-radius: 10px;
+                padding: 1px;
+            }
+
+            .focused{
+                border: 2px solid $main-primary-300;
+            }
+
+            input, textarea{
+                border: 1px solid $main-neural-400;
+                border-radius: 8px;
+                color: $main-neural-400;
+                padding: 16px;
+                font-size: 16px;
+                width: 400px;
+                outline: none;
+            }
+
+            .error{
+                border: 1px solid $system-error;
+            }
+        }
+
+        .prices, .info, .searches{
+            display: flex;
+            align-items: flex-start;
+            gap: 80px;
+            padding: 0;
+            .num-input{
+                width: 200px;
+            }
+        }
+
+        .search{
+            padding: 0;
+            position: relative;
+            .disabled{
+                color: $system-error;
+            }
+            .search-results{
+                position: absolute;
+                max-height: 160px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                justify-content: flex-start;
+                align-items: flex-start;
+                background-color: $main-neural-100;
+                left: 0;
+                width: calc(100% - 28px);
+                top: 84px;
+                padding: 14px 24px;
+                border-bottom-left-radius: 12px;
+                border-bottom-right-radius: 12px;
+                border: 2px solid $main-neural-200;
+                overflow-y: scroll;
+                span{
+                    cursor: pointer;
+                    color: $main-neural-300;
+                    &:hover{
+                        color: $main-primary-300;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+        
+        .btn-wrapper{
+            display: flex;
+            justify-content: center;
+            margin: 16px;
+        }
+        button{
+            @extend .global-button;
+            width: 440px;
+            margin-bottom: 24px;
+        }
+    }
+}

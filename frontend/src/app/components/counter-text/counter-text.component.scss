@@ -1,0 +1,12 @@
+@use "/src/styles.scss" as *;
+
+div{
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    span{
+        color: $main-neural-300;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}

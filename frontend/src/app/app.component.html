@@ -1,0 +1,14 @@
+<div class="app-layout">
+    <app-error-notify/>
+    <app-loader />
+    <app-info-popup />
+    
+    <app-navbar *ngIf="!isInAuthPages; else authNavbar" />
+    <ng-template #authNavbar><app-auth-navbar /></ng-template>
+
+    <div class="main-content">
+        <router-outlet/>
+    </div>
+    
+    <app-footer/>
+</div>

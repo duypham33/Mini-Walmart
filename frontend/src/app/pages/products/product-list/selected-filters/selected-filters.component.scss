@@ -1,0 +1,38 @@
+@use "/src/styles.scss" as *;
+
+.selected-filters{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    .header{
+        color: $main-neural;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .filter-tag{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        cursor: pointer;
+        border-radius: 6px;
+        border: 1px solid $main-neural-400;
+        &:hover{
+            border: 2px solid $main-neural-400;
+        }
+        span{
+            font-size: 13px;
+        }
+    }
+
+    .clear{
+        cursor: pointer;
+        font-size: 13px;
+        text-decoration: underline;
+        &:hover{
+            text-decoration: none;
+            color: $main-primary-300;
+        }
+    }
+}

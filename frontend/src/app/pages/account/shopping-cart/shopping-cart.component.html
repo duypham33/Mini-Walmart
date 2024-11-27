@@ -1,0 +1,3 @@
+<div class="cart-page" *ngIf="cartItems$ | async as items">
+    <app-shopping-list [items]="shoppingItems(items)" [inCart]="true" />
+</div>

@@ -1,0 +1,75 @@
+@use "/src/styles.scss" as *;
+
+.loading{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    top: 0;
+    left: 0;
+    z-index: 3000;
+}
+.loading svg{
+    width: 205px;
+    height: 250px;
+    font-size: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    animation: text 1s ease-in-out infinite;
+}
+@keyframes text{
+    50%{ opacity: 0.25 }
+}
+.loading polygon{
+    stroke: $main-primary-300;
+    stroke-dasharray: 22;
+    stroke-dashoffset: 1;
+    animation: dash 4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 
+    infinite alternate-reverse;
+}
+@keyframes dash{
+    25%{stroke: $main-primary-300;}
+    50%{stroke: $main-primary-300;}
+    75%{stroke: $main-primary-300;}
+    to {stroke-dashoffset: 234;}
+}
+
+.loading text{
+    fill: $main-primary-300;
+    animation: textColor 2s ease-in-out infinite;
+}
+
+@keyframes textColor{
+    50%{ fill: $main-primary-300 }
+}
+
+.loading2{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.loading2 img{
+    opacity: 0.5;
+    width: 90px;
+    animation: logoLoading 1s ease-in-out infinite;
+}
+
+@keyframes logoLoading{
+    25%{ opacity: 0.3 }
+    50%{ opacity: 0.05 }
+    75%{ opacity: 0.3 }
+}

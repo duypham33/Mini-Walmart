@@ -1,0 +1,39 @@
+@use "/src/styles.scss" as *;
+
+.info{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    img{
+        width: 32px;
+        height: 32px;
+    }
+    span{
+        color: $system-success;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    border-left: solid 10px $system-success;
+    border-radius: 6px;
+    padding: 14px 20px;
+    background-color: $system-success-200;
+    font-size: 18px;
+    box-shadow: -5px -5px 30px 1px $system-success-400, 5px 5px 30px 1px $system-success-400;
+    position: absolute;
+    top: -300px;
+    top: 16px;
+    opacity: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 180px;
+    animation: moving 7s 1;
+    z-index: 5000;
+}
+
+@keyframes moving {
+    10%, 100% {
+        top: 16px;
+        opacity: 1;
+    }
+}

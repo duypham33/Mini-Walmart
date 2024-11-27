@@ -1,0 +1,42 @@
+<div class="register-page">
+    <img class="logo" src="assets/icons/general/logo.svg" />
+    <span class="header">Sign up for an account</span>
+    <div class="info">
+        <span>Manage your shop efficiently with Walmart</span>
+    </div>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="auth-input">
+            <span class="field">Username</span>
+            <div class="input-wrapper" [ngClass]="focusField === 'username' ? 'focused' : ''">
+                <input ngModel #username="ngModel" name="username" [ngClass]="isInValid(username) ? 'error' : ''"
+                required minlength="3" (focus)="onFocus('username')" (blur)="onBlur('username')" />
+            </div>
+            <app-input-error *ngIf="isInValid(username)" [error]="getError('Username', username.errors!)" />
+        </div>
+
+        <div class="auth-input">
+            <span class="field">Email</span>
+            <div class="input-wrapper" [ngClass]="focusField === 'email' ? 'focused' : ''">
+                <input ngModel #email="ngModel" name="email" [ngClass]="isInValid(email) ? 'error' : ''"
+                required minlength="3" (focus)="onFocus('email')" (blur)="onBlur('email')" />
+            </div>
+            <app-input-error *ngIf="isInValid(email)" [error]="getError('Email', email.errors!)" />
+        </div>
+
+        <div class="auth-input">
+            <span class="field">Password</span>
+            <div class="input-wrapper" [ngClass]="focusField === 'password' ? 'focused' : ''">
+                <input type="password" ngModel #password="ngModel" [ngClass]="isInValid(password) ? 'error' : ''"
+                name="password" required minlength="3" (focus)="onFocus('password')" (blur)="onBlur('password')" />
+            </div>
+            <app-input-error *ngIf="isInValid(password)" [error]="getError('Password', password.errors!)" />
+        </div>
+
+        <button [disabled]="!registerForm.valid">Submit</button>
+    </form>
+
+    <div class="action">
+        <span>Already have an account?</span>
+        <a [routerLink]="LOGIN_URL">Sign In</a>
+    </div>
+</div>

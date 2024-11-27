@@ -1,0 +1,104 @@
+<div class="product-form" *ngIf="isReady">
+    <span class="header">
+        {{isUpdateMode ? 'Update' : 'New'}} Product
+    </span>
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+        <div class="info">
+            <div class="product-input">
+                <span class="field">Name</span>
+                <div class="input-wrapper" [ngClass]="focusField === 'name' ? 'focused' : ''">
+                    <input [(ngModel)]="product.name" #name="ngModel" name="name" [ngClass]="isInValid(name) ? 'error' : ''"
+                    required (focus)="onFocus('name')" (blur)="onBlur('name')" />
+                </div>
+                <app-input-error *ngIf="isInValid(name)" [error]="getError('Product Name', name.errors!)" />
+            </div>
+            <div class="product-input">
+                <span class="field">Description</span>
+                <div class="input-wrapper" [ngClass]="focusField === 'description' ? 'focused' : ''">
+                    <textarea [(ngModel)]="product.description" #description="ngModel" name="description" rows="4"
+                    [ngClass]="isInValid(description) ? 'error' : ''"
+                    required (focus)="onFocus('description')" (blur)="onBlur('description')" ></textarea>
+                </div>
+                <app-input-error *ngIf="isInValid(description)" [error]="getError('Product Description', description.errors!)" />
+            </div>
+        </div>
+
+        <div class="prices">
+            <div class="product-input">
+                <span class="field">Retail Price</span>
+                <div class="input-wrapper" [ngClass]="focusField === 'retailPrice' ? 'focused' : ''">
+                    <input class="num-input" [(ngModel)]="product.retailPrice" #retailPrice="ngModel" type="number" min="0"
+                    name="retailPrice" [ngClass]="isInValid(retailPrice) ? 'error' : ''"
+                    required (focus)="onFocus('retailPrice')" (blur)="onBlur('retailPrice')" />
+                </div>
+                <app-input-error *ngIf="isInValid(retailPrice)" [error]="getError('Retail Price', retailPrice.errors!)" />
+            </div>
+
+            <div class="product-input">
+                <span class="field">Wholesale Price</span>
+                <div class="input-wrapper" [ngClass]="focusField === 'wholesalePrice' ? 'focused' : ''">
+                    <input class="num-input" [(ngModel)]="product.wholesalePrice" #wholesalePrice="ngModel" type="number" min="0"
+                    name="wholesalePrice" [ngClass]="isInValid(wholesalePrice) ? 'error' : ''"
+                    required (focus)="onFocus('wholesalePrice')" (blur)="onBlur('wholesalePrice')" />
+                </div>
+                <app-input-error *ngIf="isInValid(wholesalePrice)" [error]="getError('Wholesale Price', wholesalePrice.errors!)" />
+            </div>
+
+            <div class="product-input">
+                <span class="field">Quantity</span>
+                <div class="input-wrapper" [ngClass]="focusField === 'quantity' ? 'focused' : ''">
+                    <input class="num-input" [(ngModel)]="product.quantity" #quantity="ngModel" type="number" min="0" step="1"
+                    name="quantity" [ngClass]="isInValid(quantity) ? 'error' : ''"
+                    required (focus)="onFocus('quantity')" (blur)="onBlur('quantity')" />
+                </div>
+                <app-input-error *ngIf="isInValid(quantity)" [error]="getError('Quantity', quantity.errors!)" />
+            </div>
+        </div>
+
+        <div class="searches">
+            <div class="search">
+                <div class="product-input">
+                    <span class="field">Category <span class="disabled" *ngIf="isUpdateMode">(not editable)</span> </span>
+                    <div class="input-wrapper" [ngClass]="focusField === 'category' ? 'focused' : ''">
+                        <input [(ngModel)]="product.category.categoryPath" #category="ngModel" name="category"
+                        [ngClass]="isInValid(category) ? 'error' : ''" [disabled]="isUpdateMode"
+                        required (focus)="onFocus('category')" (blur)="onBlur('category')"
+                        (input)="onCategoryKw($event)" />
+                    </div>
+                    <app-input-error *ngIf="isInValid(category)" [error]="getError('Category', category.errors!)" />
+                </div>
+
+                <ng-container *ngIf="categories$ | async as categories">
+                    <div class="search-results" *ngIf="categories.length > 0">
+                        <span (click)="closeCategory()">CLOSE</span>
+                        <span (click)="onSelectCategory(c)" *ngFor="let c of categories">{{c.categoryPath}}</span>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="search">
+                <div class="product-input">
+                    <span class="field">Brand <span class="disabled" *ngIf="isUpdateMode">(not editable)</span> </span>
+                    <div class="input-wrapper" [ngClass]="focusField === 'brand' ? 'focused' : ''">
+                        <input [(ngModel)]="product.brand.name" #brand="ngModel" name="brand"
+                        [ngClass]="isInValid(brand) ? 'error' : ''" [disabled]="isUpdateMode"
+                        required (focus)="onFocus('brand')" (blur)="onBlur('brand')"
+                        (input)="onBrandKw($event)" />
+                    </div>
+                    <app-input-error *ngIf="isInValid(brand)" [error]="getError('Brand', brand.errors!)" />
+                </div>
+
+                <ng-container *ngIf="brands$ | async as brands">
+                    <div class="search-results" *ngIf="brands.length > 0">
+                        <span (click)="closeBrand()">CLOSE</span>
+                        <span (click)="onSelectBrand(b)" *ngFor="let b of brands">{{b.name}}</span>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="btn-wrapper">
+            <button [disabled]="!productForm.valid">Submit</button>
+        </div>
+    </form>
+</div>

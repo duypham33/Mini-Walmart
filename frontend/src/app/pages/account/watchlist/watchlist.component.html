@@ -1,0 +1,8 @@
+<div class="wrapper">
+    <div class="watchlist-page" *ngIf="products$ | async as products">
+        <span class="header">Watch List</span>
+        <div class="products">
+            <app-product-card [product]="p" *ngFor="let p of products" />
+        </div>
+    </div>
+</div>

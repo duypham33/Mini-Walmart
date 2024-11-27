@@ -1,0 +1,85 @@
+@use "/src/styles.scss" as *;
+
+.wraper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    background-color: $main-neural-100;
+}
+
+.home-page{
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding: 32px 0;
+    max-width: 80%;
+
+    .stat-metrics{
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        .stat-card{
+            display: flex;
+            gap: 16px;
+            padding: 32px;
+            // border: 1px solid $main-neural-200;
+            border-radius: 12px;
+            background-color: $main-neural-100;
+            box-shadow: -5px -5px 10px 0px #0072dc3c, 5px 5px 10px 0px #0072dc3c;
+            .stat-icon{
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                background-color: $main-primary-200;
+                img{
+                    width: 60%;
+                    height: 60%;
+                }
+            }
+
+            .content{
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                .title{
+                    color: $main-neural;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+                .data{
+                    color: $main-neural-300;
+                    font-size: 13px;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    .top-products{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 32px;
+        // border: 1px solid $main-neural-200;
+        border-radius: 12px;
+        background-color: $main-neural-100;
+        box-shadow: -5px -5px 10px 0px #0072dc3c, 5px 5px 10px 0px #0072dc3c;
+        .header{
+            color: $main-neural;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .content{
+            display: flex;
+            justify-content: space-between;
+            // gap: 24px;
+            flex-wrap: wrap;
+        }
+    }
+}

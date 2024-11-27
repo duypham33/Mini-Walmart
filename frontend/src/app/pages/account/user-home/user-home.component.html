@@ -1,0 +1,76 @@
+<div class="wraper" *ngIf="stats$ | async as stats">
+    <div class="home-page">
+        <div class="stat-metrics">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="assets/icons/general/walmart_plus_ic.svg" />
+                </div>
+                <div class="content">
+                    <div class="title">Subscription</div>
+                    <div class="data">{{stats.subscription}}</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="assets/icons/general/walmart_plus_ic.svg" />
+                </div>
+                <div class="content">
+                    <div class="title">Savings</div>
+                    <!-- <div class="data">{{stats.savings}}</div> -->
+                    <app-counter-text [text]="stats.savings" />
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="assets/icons/general/e_cash_ic.svg" />
+                </div>
+                <div class="content">
+                    <div class="title">E-Cash</div>
+                    <!-- <div class="data">{{stats.ecash}}</div> -->
+                    <app-counter-text [text]="stats.ecash" />
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="assets/icons/general/order_complete_ic.svg" />
+                </div>
+                <div class="content">
+                    <div class="title">Completed Orders</div>
+                    <!-- <div class="data">{{stats.completedOrders}}</div> -->
+                    <app-counter-text [text]="stats.completedOrders" />
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="assets/icons/general/order_cancel_ic.svg" />
+                </div>
+                <div class="content">
+                    <div class="title">Canceled Orders</div>
+                    <!-- <div class="data">{{stats.cancelOrders}}</div> -->
+                    <app-counter-text [text]="stats.cancelOrders" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="top-products">
+            <span class="header">Top Frequently Purchased</span>
+            <div class="content">
+                <app-product-card [product]="p.product" [productPrize]="productPrize(i, p.metric!)"
+                *ngFor="let p of stats.frequentProducts; let i = index;" />
+            </div>
+        </div>
+
+        <div class="top-products">
+            <span class="header">Top Recently Purchased</span>
+            <div class="content">
+                <app-product-card [product]="p.product" [productPrize]="productPrize(i, p.metric!)"
+                *ngFor="let p of stats.recentProducts; let i = index;" />
+            </div>
+        </div>
+    </div>
+</div>

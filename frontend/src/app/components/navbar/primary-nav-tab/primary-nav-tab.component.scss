@@ -1,0 +1,39 @@
+@use "/src/styles.scss" as *;
+
+.nav-tab{
+    padding: 10px 14px;
+    padding-right: 16px;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    background-color: $main-primary-300;
+    &:hover{
+        background-color: $main-primary;
+    }
+    .tab-content{
+        display: flex;
+        gap: 4px;
+        span{
+            color: $main-neural-100;
+            font-size: 14px;
+        }
+
+        .title{
+            font-weight: 500;
+        }
+
+        .content{
+            font-weight: 200;
+        }
+    }
+}
+
+.dark{
+    background-color: $main-primary-400;
+}
+
+.selected{
+    background-color: $main-primary;
+}

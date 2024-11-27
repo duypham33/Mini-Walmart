@@ -1,0 +1,11 @@
+<div class="prices">
+    <div class="retail">
+        <span>$</span>
+        <span>{{retailEvenPrice}}</span>
+        <span>{{retailOddPrice}}</span>
+    </div>
+    
+    <div *ngIf="wholesalePrice" class="wholesale">
+        ${{wholesalePrice}} - <span class="quantity">{{quantity}} <span>Qty</span></span>
+    </div>
+</div>

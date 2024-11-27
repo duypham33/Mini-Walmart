@@ -1,0 +1,33 @@
+@use "/src/styles.scss" as *;
+
+.item-summary{
+    display: flex;
+    width: 120px;
+    height: 100px;
+    position: relative;
+    cursor: pointer;
+
+    img{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    span{
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 50%;
+        border: 1px solid $main-neural;
+        top: -4px;
+        right: -6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $main-neural-100;
+    }
+}

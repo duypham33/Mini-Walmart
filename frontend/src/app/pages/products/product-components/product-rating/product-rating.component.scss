@@ -1,0 +1,16 @@
+@use "/src/styles.scss" as *;
+
+.rating{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    img{
+        width: 16px;
+        height: 16px;
+    }
+    span{
+        margin-left: 4px;
+        font-size: 14px;
+        color: $main-neural-300;
+    }
+}

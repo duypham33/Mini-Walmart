@@ -1,0 +1,107 @@
+<div class="order-page" *ngIf="data$ | async as data">
+    <app-overlay-mask *ngIf="openCancel" (onClose)="onCloseCancel()">
+        <app-cancel-order (cancelECash)="handleCancel(data.order, true)" 
+        (cancelRefund)="handleCancel(data.order, false)" />
+    </app-overlay-mask>
+
+    <app-shopping-list [items]="shoppingItems(data.order)" [isDetail]="true" [noActions]="true" />
+    <div class="right-side">
+        <div class="order-detail">
+            <div class="basic">
+                <div class="line">
+                    <span>Order#</span>
+                    <span>{{orderNum(data.order)}}</span>
+                </div>
+                <div class="line" *ngIf="data.order.orderingUser">
+                    <span>Username</span>
+                    <span>{{data.order.orderingUser.username}}</span>
+                </div>
+                <div class="line">
+                    <span>Placed Date</span>
+                    <span>{{parseDate(data.order.placedDate)}}</span>
+                </div>
+                <div class="line">
+                    <span>Status</span>
+                    <div class="status">
+                        <img [src]="orderStatusIconPath(data.order)" />
+                        <span>{{orderStatus(data.order)}}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="charge">
+                <div class="subtotal items">
+                    <span class="title">Subtotal <span class="numitems">({{numItems(data.order)}} items)</span></span>
+                    <span class="fee">${{data.invoice.charges.subtotal | number:'1.2-2'}}</span>
+                </div>
+                <div class="subtotal shipping">
+                    <div>
+                        <span class="title">Shipping</span>
+                        <span class="date">Expected delivery on {{parseDate(data.invoice.estimatedDate)}}</span>
+                    </div>
+                    <span class="fee">${{data.invoice.charges.shipping}}</span>
+                </div>
+                <span class="total">${{data.invoice.chargeTotal | number:'1.2-2'}}</span>
+            </div>
+            
+            <ng-container *ngIf="data.invoice.deducts.shipping || data.invoice.deducts.discount">
+                <div class="divider"></div>
+                <div class="benefits">
+                    <div class="subtotal" *ngIf="data.invoice.deducts.shipping">
+                        <div class="title">
+                            <img src="assets/icons/general/walmart_plus_ic.svg" />
+                            <span>{{data.invoice.deducts.shipping.detail}}</span>
+                        </div>
+                        <span class="fee">-${{-data.invoice.deducts.shipping.subtotal}}</span>
+                    </div>
+                    <div class="subtotal" *ngIf="data.invoice.deducts.discount">
+                        <div class="title">
+                            <img src="assets/icons/general/walmart_plus_ic.svg" />
+                            <span>{{data.invoice.deducts.discount.detail}}</span>
+                        </div>
+                        <span class="fee">-${{-data.invoice.deducts.discount.subtotal | number:'1.2-2'}}</span>
+                    </div>
+                    <span class="savings">{{data.invoice.saving}}</span>
+                </div>
+            </ng-container>
+            
+            <ng-container *ngIf="data.invoice.deducts.eCash">
+                <div class="divider"></div>
+                <div class="benefits">
+                    <div class="subtotal">
+                        <div class="title">
+                            <img src="assets/icons/general/e_cash_ic.svg" />
+                            <span>{{data.invoice.deducts.eCash.detail}}</span>
+                        </div>
+                        <span class="fee">-${{-data.invoice.deducts.eCash.subtotal | number:'1.2-2'}}</span>
+                    </div>
+                </div>
+            </ng-container>
+
+            <div class="divider"></div>
+            <div class="final-total">
+                <span>Estimated Total</span>
+                <span>${{data.invoice.finalDueAmount | number:'1.2-2'}}</span>
+            </div>
+
+            <ng-container *ngIf="isOrderProcessing(data.order)">
+                <div class="divider"></div>
+                <div class="actions">
+                    <button class="btn cancel"
+                    (click)="onCancel()" [ngStyle]="{'width': data.order.orderingUser ? undefined : '100%'}">Cancel</button>
+                    <button class="btn complete" *ngIf="data.order.orderingUser" 
+                    (click)="onComplete(data.order.id)">Complete</button>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="logs" *ngIf="data.order.recordedLog">
+            <span class="header">Activity Logs</span>
+            <div>
+                <span *ngFor="let log of data.order.recordedLog">
+                    &#x2022; {{log}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

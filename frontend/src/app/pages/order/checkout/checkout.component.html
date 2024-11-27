@@ -1,0 +1,69 @@
+<div class="checkout-page" *ngIf="data$ | async as data">
+    <app-shopping-list [items]="shoppingItems(data.cartItems)" [isDetail]="true" />
+    <div>
+        <div class="checkout-detail">
+            <div class="checkout-btn">
+                <button (click)="checkout()">Place order for ${{data.invoice.finalDueAmount  | number:'1.2-2'}}</button>
+                <span>
+                    By place this order, you argee to our 
+                    <span class="terms">Privacy Policy</span> and <span class="terms">Terms of Use</span>
+                </span>
+            </div>
+            
+            <div class="charge">
+                <div class="subtotal items">
+                    <span class="title">Subtotal <span class="numitems">({{numItems(data.cartItems)}} items)</span></span>
+                    <span class="fee">${{data.invoice.charges.subtotal  | number:'1.2-2'}}</span>
+                </div>
+                <div class="subtotal shipping">
+                    <div>
+                        <span class="title">Shipping</span>
+                        <span class="date">Expected delivery on {{data.invoice.estimatedDate}}</span>
+                    </div>
+                    <span class="fee">${{data.invoice.charges.shipping}}</span>
+                </div>
+                <span class="total">${{data.invoice.chargeTotal  | number:'1.2-2'}}</span>
+            </div>
+            
+            <ng-container *ngIf="data.invoice.deducts.shipping || data.invoice.deducts.discount">
+                <div class="divider"></div>
+                <div class="benefits">
+                    <div class="subtotal" *ngIf="data.invoice.deducts.shipping">
+                        <div class="title">
+                            <img src="assets/icons/general/walmart_plus_ic.svg" />
+                            <span>{{data.invoice.deducts.shipping.detail}}</span>
+                        </div>
+                        <span class="fee">-${{-data.invoice.deducts.shipping.subtotal}}</span>
+                    </div>
+                    <div class="subtotal" *ngIf="data.invoice.deducts.discount">
+                        <div class="title">
+                            <img src="assets/icons/general/walmart_plus_ic.svg" />
+                            <span>{{data.invoice.deducts.discount.detail}}</span>
+                        </div>
+                        <span class="fee">-${{-data.invoice.deducts.discount.subtotal | number:'1.2-2'}}</span>
+                    </div>
+                    <span class="savings">{{data.invoice.saving}}</span>
+                </div>
+            </ng-container>
+            
+            <ng-container *ngIf="data.invoice.deducts.eCash">
+                <div class="divider"></div>
+                <div class="benefits">
+                    <div class="subtotal">
+                        <div class="title">
+                            <img src="assets/icons/general/e_cash_ic.svg" />
+                            <span>{{data.invoice.deducts.eCash.detail}}</span>
+                        </div>
+                        <span class="fee">-${{-data.invoice.deducts.eCash.subtotal | number:'1.2-2'}}</span>
+                    </div>
+                </div>
+            </ng-container>
+
+            <div class="divider"></div>
+            <div class="final-total">
+                <span>Estimated Total</span>
+                <span>${{data.invoice.finalDueAmount  | number:'1.2-2'}}</span>
+            </div>
+        </div>
+    </div>
+</div>

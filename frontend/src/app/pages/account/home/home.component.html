@@ -1,0 +1,7 @@
+<ng-template #home>
+    <app-user-home/>
+</ng-template>
+
+<ng-container *ngIf="userRole$ | async as role">
+    <app-admin-home *ngIf="isAdmin(role); else home" />
+</ng-container>

@@ -1,0 +1,30 @@
+<div class="wrapper" *ngIf="user$ | async as user">
+    <div class="wrapper" (click)="onClick()">
+        <app-primary-nav-tab [iconUrl]="'assets/icons/general/white_account_ic.svg'" 
+        [title]="'Account'" [content]="getUserName(user)" [isReverse]="true" />
+    </div>
+    
+    <app-overlay-mask *ngIf="openProduct" (onClose)="closeNewProduct()">
+        <app-product-form [productDetail]="null" (onCreated)="closeNewProduct()" />
+    </app-overlay-mask>
+    
+    <div class="menu" *ngIf="isSelected">
+        <div class="tab" (click)="navigateProducts()">
+            <img src="assets/icons/general/products_menu_ic.svg" />
+            <span>Products</span>
+        </div>
+        <div class="tab" *ngIf="isAdmin(user)" (click)="openNewProduct()">
+            <img src="assets/icons/general/new_product_ic.svg" />
+            <span>New Product</span>
+        </div>
+        <div class="tab" (click)="navigateOrders()">
+            <img src="assets/icons/general/order_menu_ic.svg" />
+            <span>Purchase History</span>
+        </div>
+        <div class="tab" (click)="logout()">
+            <img src="assets/icons/general/logout_ic.svg" />
+            <span>Logout</span>
+        </div>
+    </div>
+    <div class="mask" *ngIf="isSelected"></div>
+</div>

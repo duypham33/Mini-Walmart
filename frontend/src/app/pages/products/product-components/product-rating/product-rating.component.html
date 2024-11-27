@@ -1,0 +1,6 @@
+<div class="rating">
+    <img *ngFor="let i of generateArray"
+    src="assets/icons/general/star_ic.svg" />
+    <img *ngIf="hasHalf" src="assets/icons/general/half_star_ic.svg" />
+    <span>({{rating}})</span>
+</div>

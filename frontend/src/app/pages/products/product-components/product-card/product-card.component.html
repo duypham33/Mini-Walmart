@@ -1,0 +1,27 @@
+<div class="product-card" *ngIf="cartItems$ | async as cartItems">
+    <app-overlay-mask *ngIf="openEdit" (onClose)="toggleOpenEdit()">
+        <app-product-form [productDetail]="product" (onUpdate)="onProductUpdate($event)" />
+    </app-overlay-mask>
+    <div class="top">
+        <img class="saved" *ngIf="watchList$ | async as watchList" [src]="watchListImg(watchList)"
+        (click)="updateWatchList(watchList)" />
+        <img class="product-img" [src]="imgPath" (click)="viewProductDetail()" />
+        <app-product-action-button [items]="getCartItemQuantity(cartItems)" 
+        *ngIf="!editable" (onUpdate)="onUpdate($event, cartItems)" />
+        <button class="edit-btn" *ngIf="editable" (click)="toggleOpenEdit()">Edit</button>
+
+        <div class="product-prize" *ngIf="productPrize">
+            <!-- <img [src]="getPrizeIcon(productPrize.position)" /> -->
+            <span>{{productPrize.value}}</span>
+            <div>
+                <img [src]="getPrizeIcon(productPrize.position)" />
+            </div>
+        </div>
+    </div>
+    <div class="bottom" (click)="viewProductDetail()">
+        <app-product-prices [retailPrice]="product.retailPrice" 
+        [wholesalePrice]="product.wholesalePrice" [quantity]="product.quantity" />
+        <div class="name">{{product.name}}</div>
+        <app-product-rating *ngIf="product.rating" [rating]="product.rating" />
+    </div>
+</div>

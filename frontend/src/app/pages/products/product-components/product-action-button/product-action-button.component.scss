@@ -1,0 +1,40 @@
+@use "/src/styles.scss" as *;
+
+.action-btn{
+    @extend .global-button;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 8px 16px;
+    .plus{
+        font-size: 24px;
+        margin-right: 8px;
+    }
+}
+
+.action-btn2{
+    @extend .global-button;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 8px 16px;
+    width: 160px;
+    justify-content: space-between;
+    cursor: default;
+    &:hover{
+        background-color: $main-primary-300;
+    }
+    .sign{
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            background-color: $main-primary-400;
+        }
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+}

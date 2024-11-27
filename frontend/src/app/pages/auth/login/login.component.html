@@ -1,0 +1,33 @@
+<div class="login-page">
+    <img class="logo" src="assets/icons/general/logo.svg" />
+    <span class="header">Sign in to your account</span>
+    <div class="info">
+        <span>Manage your shop efficiently with Walmart</span>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="auth-input">
+            <span class="field">Username</span>
+            <div class="input-wrapper" [ngClass]="focusField === 'username' ? 'focused' : ''">
+                <input ngModel #username="ngModel" name="username" [ngClass]="isInValid(username) ? 'error' : ''"
+                required minlength="3" (focus)="onFocus('username')" (blur)="onBlur('username')" />
+            </div>
+            <app-input-error *ngIf="isInValid(username)" [error]="getError('Username', username.errors!)" />
+        </div>
+
+        <div class="auth-input">
+            <span class="field">Password</span>
+            <div class="input-wrapper" [ngClass]="focusField === 'password' ? 'focused' : ''">
+                <input type="password" ngModel #password="ngModel" [ngClass]="isInValid(password) ? 'error' : ''"
+                name="password" required minlength="3" (focus)="onFocus('password')" (blur)="onBlur('password')" />
+            </div>
+            <app-input-error *ngIf="isInValid(password)" [error]="getError('Password', password.errors!)" />
+        </div>
+
+        <button [disabled]="!loginForm.valid">Submit</button>
+    </form>
+
+    <div class="action">
+        <span>Don't have an account?</span>
+        <a [routerLink]="REGISTER_URL">Sign Up</a>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<app-overlay-mask *ngIf="error$ | async as err">
+    <div class="error">
+        <div class="header">
+            <img src="assets/icons/general/error_ic.svg" />
+            <span>{{err.status}}</span>
+        </div>
+        <span class="message">
+            {{err.message}}
+        </span>
+        <div class="action" (click)="onClose()">
+            Dimiss
+        </div>
+    </div>
+</app-overlay-mask>

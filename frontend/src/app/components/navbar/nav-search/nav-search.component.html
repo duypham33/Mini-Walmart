@@ -1,0 +1,8 @@
+<div class="wrapper" [ngClass]="isFocus ? 'wrapper-focused' : ''">
+    <div class="nav-search" [ngClass]="isFocus ? 'focused' : ''">
+        <input placeholder="Search everything at Walmart online and in store..." 
+        [(ngModel)]="search" name="search"
+        (focus)="onFocus()" (blur)="onBlur()" />
+        <img src="assets/icons/general/white_search_ic.svg" (click)="onSearch()" />
+    </div>
+</div>

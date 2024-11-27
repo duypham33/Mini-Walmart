@@ -1,0 +1,7 @@
+<div class="cart-div" (click)="navigateToShoppingCart()" *ngIf="cartItems$ | async as cartItems">
+    <div class="cart">
+        <img src="assets/icons/general/white_cart_ic.svg" />
+        <div class="item-num">{{numItems(cartItems)}}</div>
+    </div>
+    <span class="price">${{getTotalItemsCost(cartItems)  | number:'1.2-2'}}</span>
+</div>

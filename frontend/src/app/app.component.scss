@@ -1,0 +1,10 @@
+@use "/src/styles.scss" as *;
+
+.app-layout{
+    @include colFlex(0);
+    .main-content{
+        margin-top: 150px;
+        min-height: calc(100vh - 215px);
+        display: flex;
+    }
+}

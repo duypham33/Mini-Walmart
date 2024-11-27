@@ -1,0 +1,37 @@
+<div class="products-page" *ngIf="products$ | async">
+    <div class="left-side">
+        <app-product-filters [productFilter]="productFilter" [brands]="brands"
+        [priceRage]="priceRage" (filter)="onFilter()" />
+        <div class="pages">
+            <div class="page" *ngIf="productQuery.page > 1" (click)="navigatePage(-1)">
+                <img src="assets/icons/general/left_ic.svg" />
+                <span>Previous</span>
+            </div>
+            <div class="page" (click)="navigatePage(1)" *ngIf="products.length === productQuery.pageSize">
+                <span>Next</span>
+                <img src="assets/icons/general/right_ic.svg" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="vertical-divider"></div>
+    <div class="right-side">
+        <app-selected-filters [productFilter]="productFilter" (onRemoveMaxPrice)="removeMaxPrice()"
+        (onClearAllFilter)="clearAllFilter()" (onRemoveBrand)="removeBrand($event)" />
+        <div class="description">
+            <span *ngIf="productQuery.search">
+                Results for "{{productQuery.search}}": {{resultMessage}}
+            </span>
+            <span *ngIf="!productQuery.search">
+                {{resultMessage}}
+            </span>
+        </div>
+
+        <div class="results">
+            <div class="products">
+                <app-product-card [product]="p" *ngFor="let p of products" />
+            </div>
+            <!-- <div class="pages"></div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+@use "/src/styles.scss" as *;
+
+.product-filters{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 12px 26px;
+
+    .filter-button{
+        @extend .global-button;
+    }
+
+    .divider{
+        height: 1px;
+        width: 250px;
+        background-color: $main-neural-200;
+    }
+
+    .filter{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        .header{
+            color: $main-neural;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .current{
+            display: flex;
+            justify-content: center;
+            color: $main-neural;
+            font-weight: 600;
+            margin: 12px 0;
+        }
+
+        .price-points{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            margin: 12px 0;
+        }
+    }
+
+    .price-filter{
+        .priceSlider{
+            // -webkit-appearance: none;
+            // appearance: none;
+            height: 6px;
+            width: 250px;
+            border-radius: 5px;
+            background: $main-primary-300;
+            outline: none;
+        }
+    
+        .priceSlider::-webkit-slider-thumb{
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: $main-primary-300;
+            cursor: pointer;
+        }
+    
+        .priceSlider::-moz-range-thumb{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: $main-primary-300;
+            cursor: pointer;
+        }
+    }
+
+    .brands-selection{
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        
+        input{
+            width: 20px;
+            height: 20px;
+            border-radius: 2px;
+        }
+
+        label{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .selected{
+            font-weight: bold;
+        }
+    }
+}

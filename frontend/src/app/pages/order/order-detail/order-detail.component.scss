@@ -1,0 +1,241 @@
+@use "/src/styles.scss" as *;
+
+.order-page{
+    display: flex;
+    justify-content: center;
+    padding: 24px 0 40px 0;
+    gap: 24px;
+    width: 100vw;
+
+    .right-side{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .logs{
+        display: flex;
+        flex-direction: column;
+        padding: 12px 0;
+        border: 2px solid $main-neural-200;
+        border-radius: 14px;
+        min-width: 400px;
+        .header{
+            width: calc(100% - 44px);
+            padding: 4px 22px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid $main-neural-200;
+            color: $main-neural;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 12px 22px;
+            span{
+                color: $main-neural-300;
+                font-size: 14px;
+                font-weight: 400;
+                max-width: calc(400px - 44px);
+            }
+        }
+    }
+
+    .order-detail{
+        display: flex;
+        flex-direction: column;
+        padding: 16px 0;
+        border: 2px solid $main-neural-200;
+        border-radius: 14px;
+        min-width: 400px;
+
+        .divider{
+            height: 2px;
+            background-color: $main-neural-200;
+            width: calc(100% - 32px);
+            margin-left: 16px;
+        }
+
+        .basic{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 14px 16px 14px;
+            border-bottom: 2px solid $main-neural-200;
+
+            .line{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                span{
+                    &:first-child{
+                        color: $main-neural;
+                        font-weight: 500;
+                    }
+
+                    font-weight: 300;
+                }
+
+                .status{
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    margin-bottom: 6px;
+                    img{
+                        width: 24px;
+                        height: 24px;
+                    }
+                    span{
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: $main-neural-300;
+                    }
+                }
+            }
+        }
+
+        .charge{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 18px;
+
+            .total{
+                display: flex;
+                justify-content: flex-end;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .subtotal{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .title{
+                    // font-size: 18px;
+                    font-weight: 600;
+                }
+
+                .numitems, .fee{
+                    color: $main-neural-300;
+                    font-weight: 400;
+                }
+
+                .fee{
+                    font-size: 18px;
+                }
+            }
+
+            .shipping{
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    .date{
+                        font-size: 12px;
+                        color: $main-neural-300;
+                    }
+                }
+            }
+        }
+
+        .benefits{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 18px;
+
+            .savings{
+                font-size: 14px;
+                color: $main-neural-300;
+                text-align: center;
+            }
+
+            .subtotal{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .fee{
+                    color: $main-neural-300;
+                    font-weight: 400;
+                    font-size: 18px;
+                }
+
+                .title{
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    img{
+                        width: 24px;
+                        height: 24px;
+                    }
+                    span{
+                        font-size: 15px;
+                        color: $main-primary-300;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+        .final-total{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px;
+            span{
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+
+        .actions{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px;
+            .btn{
+                color: $main-neural;
+                font-size: 15px;
+                font-weight: 500;
+                padding: 10px;
+                border-radius: 18px;
+                border: 1px solid $main-neural;
+                cursor: pointer;
+                min-width: 80px;
+                background-color: $main-neural-100;
+                &:hover{
+                    border: 2px solid $main-neural;
+                }
+            }
+
+            .complete{
+                color: $system-success;
+                border: 1px solid $system-success;
+                &:hover{
+                    color: $main-neural-100;
+                    background-color: $system-success;
+                    border: 2px solid $system-success;
+                    font-weight: 600;
+                }
+            }
+
+            .cancel{
+                color: $system-error;
+                border: 1px solid $system-error;
+                &:hover{
+                    color: $main-neural-100;
+                    background-color: $system-error;
+                    border: 2px solid $system-error;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

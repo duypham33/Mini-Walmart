@@ -1,0 +1,82 @@
+@use "/src/styles.scss" as *;
+
+.shopping-list{
+    display: flex;
+    flex-direction: column;
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 50vw;
+        background-color: $main-primary-200;
+        padding: 26px 24px;
+        border: 2px solid $main-neural-200;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+
+        .left-side{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            span{
+                &:nth-child(1){
+                    color: $main-neural;
+                    font-size: 24px;
+                    font-weight: 400;
+                }
+
+                &:nth-child(2){
+                    color: $main-neural-300;
+                    font-size: 20px;
+                    font-weight: 300;
+                }
+            }
+        }
+
+        .details-action{
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            margin-left: 24px;
+            &:hover{
+                color: $main-primary-300;
+                text-decoration: underline;
+            }
+        }
+
+        .checkout{
+            color: $main-neural-300;
+        }
+    }
+
+    .details{
+        border: 2px solid $main-neural-200;
+        border-top: none;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: calc(50vw + 48px);
+
+        .divider{
+            width: calc(100% - 36px);
+            height: 2px;
+            background-color: $main-neural-200;
+            margin-left: 18px;
+        }
+    }
+
+    .summary{
+        border: 2px solid $main-neural-200;
+        border-top: none;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(50vw + 48px - 32px);
+        padding: 16px;
+        gap: 16px;
+    }
+}

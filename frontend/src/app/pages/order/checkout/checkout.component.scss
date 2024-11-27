@@ -1,0 +1,143 @@
+@use "/src/styles.scss" as *;
+
+.checkout-page{
+    display: flex;
+    justify-content: center;
+    padding: 24px 0 40px 0;
+    gap: 24px;
+    width: 100vw;
+    .checkout-detail{
+        display: flex;
+        flex-direction: column;
+        padding: 16px 0;
+        border: 2px solid $main-neural-200;
+        border-radius: 14px;
+
+        .divider{
+            height: 2px;
+            background-color: $main-neural-200;
+            width: calc(100% - 32px);
+            margin-left: 16px;
+        }
+
+        .checkout-btn{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 24px 14px 16px 14px;
+            border-bottom: 2px solid $main-neural-200;
+
+            button{
+                @extend .global-button;
+                width: 400px;
+            }
+
+            span{
+                font-size: 10px;
+                color: $main-neural-300;
+                font-weight: 500;
+                .terms{
+                    text-decoration: underline;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .charge{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 18px;
+
+            .total{
+                display: flex;
+                justify-content: flex-end;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .subtotal{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .title{
+                    // font-size: 18px;
+                    font-weight: 600;
+                }
+
+                .numitems, .fee{
+                    color: $main-neural-300;
+                    font-weight: 400;
+                }
+
+                .fee{
+                    font-size: 18px;
+                }
+            }
+
+            .shipping{
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    .date{
+                        font-size: 13px;
+                        color: $main-neural-300;
+                    }
+                }
+            }
+        }
+
+        .benefits{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 18px;
+
+            .savings{
+                font-size: 14px;
+                color: $main-neural-300;
+                text-align: center;
+            }
+
+            .subtotal{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .fee{
+                    color: $main-neural-300;
+                    font-weight: 400;
+                    font-size: 18px;
+                }
+
+                .title{
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    img{
+                        width: 24px;
+                        height: 24px;
+                    }
+                    span{
+                        font-size: 15px;
+                        color: $main-primary-300;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+        .final-total{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px;
+            span{
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    }
+}

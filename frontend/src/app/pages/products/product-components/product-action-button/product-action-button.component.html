@@ -1,0 +1,13 @@
+<button class="action-btn" *ngIf="items === 0; else actionBtn2;"
+(click)="add()" [ngStyle]="customStyles" >
+    <span *ngIf="!customStyles" class="plus">+</span>
+    <span>{{text ?? 'Add'}}</span>
+</button>
+
+<ng-template #actionBtn2>
+    <button class="action-btn2" [ngStyle]="customStyles">
+        <span class="sign" (click)="sub()">-</span>
+        <span>{{items}}</span>
+        <span class="sign" (click)="add()">+</span>
+    </button>
+</ng-template>

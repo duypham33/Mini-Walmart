@@ -1,0 +1,41 @@
+<div class="product-filters">
+    <div class="price-filter filter">
+        <span class="header">Max Price</span>
+        <span class="current">{{ selectedPrice }}</span>
+        <input
+            type="range"
+            class="priceSlider"
+            [min]="priceRage.min"
+            [max]="priceRage.max"
+            [step]="priceRage.step"
+            [(ngModel)]="productFilter.maxPrice"
+        />
+        <div class="price-points">
+            <span>${{priceRage.min}}</span>
+            <span>${{middlePrice}}</span>
+            <span>${{priceRage.max}}</span>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="brand-filter filter">
+        <span class="header">Brand</span>
+        <div class="brands-selection">
+            <div *ngFor="let brand of brands">
+                <label [ngClass]="isBrandChecked(brand.id) ? 'selected' : ''">
+                  <input
+                    type="checkbox"
+                    [value]="brand.id"
+                    [checked]="isBrandChecked(brand.id)"
+                    (change)="onCheckboxChange(brand.id, $event)"
+                  />
+                  {{ brand.name }}
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    <button class="filter-button" (click)="onFilter()">Filter</button>
+    <div class="divider"></div>
+</div>

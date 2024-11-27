@@ -1,0 +1,54 @@
+@use "/src/styles.scss" as *;
+
+.cancel-order{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $main-neural-200;
+    border-radius: 14px;
+    background-color: $main-neural-100;
+    min-width: 60vw;
+    box-shadow: -5px -5px 30px 8px #0072dc3c, 5px 5px 30px 8px #0072dc3c;
+    .header{
+        padding: 32px;
+        display: flex;
+        justify-content: flex-start;
+        border-bottom: 2px solid $main-neural-200;
+        color: $main-neural;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .message{
+        padding: 32px;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    .actions{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 42px;
+        gap: 60px;
+        
+        .action{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            img{
+                width: 32px;
+                height: 32px;
+            }
+            span{
+                font-size: 24px;
+                font-weight: 400;
+                &:hover{
+                    color: $main-primary-300;
+                }
+            }
+        }
+    }
+}

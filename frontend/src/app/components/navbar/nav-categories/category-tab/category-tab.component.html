@@ -1,0 +1,5 @@
+<div class="category-tab" [ngClass]="isSelected ? 'selected' : ''" (click)="onClick()">
+    <img [src]="getIconUrl" />
+    <span>{{text}}</span>
+    <img class="arrow" src="assets/icons/general/blue_down_arrow_ic.svg" />
+</div>

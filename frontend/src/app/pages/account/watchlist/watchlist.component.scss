@@ -1,0 +1,26 @@
+@use "/src/styles.scss" as *;
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    .watchlist-page{
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        width: 60%;
+        padding: 32px;
+        .header{
+            color: $main-neural;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .products{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-bottom: 20px;
+        }
+    }
+}

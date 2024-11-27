@@ -1,0 +1,7 @@
+<div class="nav-tab" [ngClass]="classForColor" (click)="onClick()">
+    <img [src]="iconUrl" />
+    <div class="tab-content" [ngStyle]="{'flex-direction': isReverse ? 'column-reverse' : 'column'}">
+        <span class="title">{{title}}</span>
+        <span class="content">{{content}}</span>
+    </div>
+</div>

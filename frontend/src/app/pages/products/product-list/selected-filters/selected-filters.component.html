@@ -1,0 +1,13 @@
+<div class="selected-filters" *ngIf="hasFilter">
+    <span class="header">Selected Filters:</span>
+    <div class="filter-tag" *ngIf="productFilter.maxPrice" (click)="removeMaxPrice()">
+        <span>{{getFilterPrice}}</span>
+        <span class="remove-tage">X</span>
+    </div>
+    <div class="filter-tag" *ngFor="let brand of productFilter.brands"
+    (click)="removeBrand(brand.id)">
+        <span>{{brand.name}}</span>
+        <span class="remove-tage">X</span>
+    </div>
+    <span class="clear" (click)="clearAllFilter()">Clear all</span>
+</div>

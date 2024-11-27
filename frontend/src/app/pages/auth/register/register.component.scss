@@ -1,0 +1,99 @@
+@use "/src/styles.scss" as *;
+
+.register-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100vw;
+    margin-top: -20px;
+
+    .logo{
+        width: 60px;
+        height: 60px;
+    }
+
+    .header{
+        color: $main-neural;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        span{
+            font-size: 15px;
+            color: $main-neural-300;
+        }
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        margin-top: 12px;
+
+        .auth-input{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            .field{
+                color: $main-neural;
+                font-weight: 500;
+                margin-left: 8px;
+            }
+
+            .input-wrapper{
+                border: none;
+                border-radius: 10px;
+                padding: 1px;
+            }
+
+            .focused{
+                border: 2px solid $main-primary-300;
+            }
+
+            input{
+                border: 1px solid $main-neural-400;
+                border-radius: 8px;
+                color: $main-neural-400;
+                padding: 16px;
+                font-size: 16px;
+                width: 400px;
+                outline: none;
+            }
+
+            .error{
+                border: 1px solid $system-error;
+            }
+        }
+
+        button{
+            @extend .global-button;
+            width: 440px;
+        }
+    }
+
+    .action{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+        span, a{
+            font-size: 15px;
+            color: $main-neural-300;
+        }
+        a{
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+                color: $main-neural-400;
+            }
+        }
+    }
+}

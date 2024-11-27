@@ -1,0 +1,29 @@
+<div class="item-detail">
+    <div class="top">
+        <div class="info" (click)="viewProductDetail()">
+            <img [src]="imgPath" />
+            <div class="content">
+                <span class="name">{{item.product.name}}</span>
+                <div>
+                    <app-product-prices [retailPrice]="item.product.retailPrice" />
+                    <span class="quantity" *ngIf="noActions">X {{item.quantity}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="total">
+            <app-product-prices [retailPrice]="total" />
+        </div>
+    </div>
+    <div class="actions" *ngIf="!noActions">
+        <span class="remove text-btn" (click)="onRemove()">Remove</span>
+        <span class="saved text-btn" *ngIf="watchList$ | async as watchList"
+        (click)="updateWatchList(watchList)">
+            {{watchListText(watchList)}}
+        </span>
+        <button class="action-btn">
+            <span class="sign" (click)="onUpdate(-1)">-</span>
+            <span class="quantity">{{item.quantity}}</span>
+            <span class="sign" (click)="onUpdate(1)">+</span>
+        </button>
+    </div>
+</div>

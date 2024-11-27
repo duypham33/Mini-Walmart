@@ -1,0 +1,10 @@
+<div class="loading" *ngIf="isLoading$ | async">
+    <div class="loading2">
+        <img src="assets/icons/general/logo.svg" />
+    </div>
+    <svg viewBox="0 0 40 50">
+        <polygon strokeWidth="1.2" fill="none"
+        points="20,1 40,40 1,40" />
+        <text x="5" y="50">Loading</text>
+    </svg>
+</div>

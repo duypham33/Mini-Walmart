@@ -1,0 +1,48 @@
+<div class="product-detail" *ngIf="(product$ | async) as product">
+    <app-overlay-mask *ngIf="openEdit" (onClose)="toggleOpenEdit()">
+        <app-product-form [productDetail]="product" (onUpdate)="onProductUpdate($event)" />
+    </app-overlay-mask>
+
+    <div class="left-side">
+        <img [src]="imgPath(product)" />
+    </div>
+    <div class="right-side">
+        <div class="brand">
+            <span class="title">Brand</span>
+            <span class="name">{{product.brand?.name}}</span>
+        </div>
+        <span class="name">{{product.name}}</span>
+        <app-product-rating *ngIf="product.rating" [rating]="product.rating" />
+        <div class="divider"></div>
+        <div class="category">
+            <span class="title">Category</span>
+            <span class="name">{{product.category?.categoryPath}}</span>
+        </div>
+        <div class="divider"></div>
+        <div class="description">
+            <span class="title">About this item</span>
+            <span class="content">{{product.description}}</span>
+        </div>
+        <div class="divider"></div>
+        <div class="prices-action">
+            <div class="top-action" [ngStyle]="{'justify-content': product.wholesalePrice ? 'space-between' : 'center'}">
+                <app-product-prices [retailPrice]="product.retailPrice" 
+                [wholesalePrice]="product.wholesalePrice" [quantity]="product.quantity" />
+
+                <div class="list" *ngIf="watchList$ | async as watchList" 
+                (click)="updateWatchList(watchList, product.id)">
+                    <img class="saved" [src]="watchListImg(watchList, product.id)" />
+                    <span>{{watchListText(watchList, product.id)}}</span>
+                </div>
+            </div>
+            
+            <ng-container *ngIf="cartItems$ | async as cartItems">
+                <app-product-action-button [text]="'Add to cart'" *ngIf="!editable(product)"
+                [items]="getCartItemQuantity(cartItems, product.id)" (onUpdate)="onUpdate($event, cartItems, product.id)"
+                [customStyles]="{'position': 'relative', 'width': '100%', 'padding': '14px 16px'}" />
+            </ng-container>
+
+            <button class="edit-btn" *ngIf="editable(product)" (click)="toggleOpenEdit()">Edit</button>
+        </div>
+    </div>
+</div>

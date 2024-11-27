@@ -1,0 +1,47 @@
+@use "/src/styles.scss" as *;
+
+.prices{
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+
+    .retail{
+        display: flex;
+        align-items: flex-start;
+        gap: 1px;
+        span{
+            color: $main-neural;
+            font-weight: 500;
+            &:nth-child(1){
+                font-size: 16px;
+            }
+
+            &:nth-child(2){
+                font-size: 24px;
+            }
+
+            &:nth-child(3){
+                font-size: 15px;
+            }
+        }
+    }
+
+    .wholesale{
+        color: $main-neural-300;
+        display: flex;
+        font-size: 18px;
+        span{
+            color: $main-neural-300;
+            font-size: 18px;
+        }
+        .quantity{
+            margin-left: 4px;
+            display: flex;  
+            align-items: flex-start;
+            span{
+                margin-top: -4px;
+                font-size: 16px;
+            }
+        }
+    }
+}

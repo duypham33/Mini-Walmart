@@ -1,0 +1,56 @@
+<div class="orders-page" *ngIf="orders$ | async as orders">
+    <app-overlay-mask *ngIf="openCancelOrder" (onClose)="onCloseCancel()">
+        <app-cancel-order (cancelECash)="handleCancel(true)" (cancelRefund)="handleCancel(false)" />
+    </app-overlay-mask>
+
+    <div class="wrapper">
+        <div class="header">
+            <span>Order History</span>
+            <div class="pages">
+                <button class="btn" *ngIf="orderQuery.page > 1" (click)="navigatePage(-1)">Previous</button>
+                <button class="btn" *ngIf="orders.length === orderQuery.pageSize" 
+                (click)="navigatePage(1)">Next</button>
+            </div>
+        </div>
+        <div class="filters">
+            <span *ngFor="let f of filters; let i = index;" [ngClass]="i === selectedFilter ? 'selected' : ''"
+            (click)="onSelecteFilter(i)">{{f}}</span>
+        </div>
+        <div class="order-list">
+            <div class="order-card" *ngFor="let order of orders">
+                <div class="top">
+                    <span class="order-num">Order# {{order.orderNumber}}</span>
+                    <div class="actions">
+                        <button class="btn cancel" *ngIf="isOrderProcessing(order.status)" 
+                        (click)="onCancel(order)">Cancel</button>
+                        <button class="btn complete"  *ngIf="isOrderProcessing(order.status) && order.orderingUser" 
+                        (click)="onComplete(order.id)">Complete</button>
+                        <button class="btn view-detail" (click)="viewDetails(order.id)">View details</button>
+                    </div>
+                </div>
+                <div class="info">
+                    <img class="order-img" src="assets/icons/general/order_ic.svg" />
+                    <div>
+                        <div class="status">
+                            <img [src]="getOrderStatusIconPath(order.status)" />
+                            <span>{{getOrderStatus(order.status)}}</span>
+                        </div>
+                        <div class="date">
+                            <span>Placed on {{parseDate(order.placedDate)}}</span>
+                            <span class="user">{{order.orderingUser ? 'by ' + order.orderingUser.username : ''}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="numbers">
+                        <span class="total">Total ${{order.total | number:'1.2-2'}}</span>
+                        <span class="numitems">({{numItems(order)}} items)</span>
+                    </div>
+                    <div class="summary">
+                        <app-shopping-item-summary *ngFor="let item of shoppingItems(order)" [item]="item" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+@use "/src/styles.scss" as *;
+
+.auth-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 0;
+    background-color: $main-primary-300;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    div{
+        gap: 2px;
+        align-items: center;
+        display: flex;
+        cursor: pointer;
+        padding-left: 18px;
+        &:hover{
+            span{
+                text-decoration: underline;
+            }
+        }
+
+        .logo{
+            width: 40px;
+            height: 40px;
+        }
+
+        span{
+            color: $main-neural-100;
+            font-size: 38px;
+            font-weight: 600;
+        }
+    }
+}

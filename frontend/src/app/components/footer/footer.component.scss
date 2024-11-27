@@ -1,0 +1,33 @@
+@use "/src/styles.scss" as *;
+
+.footer{
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.5px solid $main-primary-300;
+    width: calc(100vw - 96px);
+    background-color: $main-primary-200;
+    .left-side{
+        color: $main-neural-400;
+        font-size: 12px;
+    }
+
+    .right-side{
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        .link{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+
+            span{
+                color: $main-neural-400;
+                font-size: 13px;
+            }
+        }
+    }
+}

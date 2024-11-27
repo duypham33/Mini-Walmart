@@ -1,0 +1,25 @@
+<div class="shopping-list">
+    <div class="header">
+        <div class="left-side">
+            <span>{{inCart ? 'Cart' : 'Item Details'}}</span>
+            <span>({{numItems}} items)</span>
+        </div>
+        <div>
+            <span class="details-action checkout" *ngIf="canCheckout" 
+            (click)="goCheckout()">Checkout</span>
+            <span class="details-action" (click)="toggleDetail()">{{isDetail ? 'Hide' : 'View'}} Details</span>
+        </div>
+    </div>
+    <div class="details" *ngIf="isDetail; else summary;">
+        <ng-container *ngFor="let item of items; let i = index;">
+            <app-shopping-item [item]="item" [noActions]="noActions" />
+            <div class="divider" *ngIf="!isLastItem(i)"></div>
+        </ng-container>
+    </div>
+
+    <ng-template #summary>
+        <div class="summary">
+            <app-shopping-item-summary *ngFor="let item of items" [item]="item" />
+        </div>
+    </ng-template>
+</div>
