@@ -1,0 +1,1304 @@
+{
+	"info": {
+		"_postman_id": "4dde8601-e32b-492d-9556-5c58411828aa",
+		"name": "OnlineShoppingApp APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25051056"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"java\",\r\n    \"email\":\"java@gmail.com\",\r\n    \"password\": \"abc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"signup"
+							]
+						},
+						"description": "Before being able to purchase products, a user has to first register.\n1. Your application should prevent registration using the same username and email.\n2. Only username, email and password are required to register an account.\n3. Password should be encrypted (Bonus)"
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"leoliu\",\r\n    \"password\": \"abc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						},
+						"description": "1. If the user has entered the correct credentials, they may proceed to the corresponding page based on their authorities.\n2. If the user has entered incorrect credentials, a custom named exception ‘InvalidCredentialsException’ should be thrown and handled by the Exception handler. The message the user will get is: “Incorrect credentials, please try again.”"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Subscription",
+					"item": [
+						{
+							"name": "ViewPlans",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/subscription-plans",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"subscription-plans"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Subscribe",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"planType\": \"PREMIUM\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/subscribe-plan",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"subscribe-plan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetMyPlan",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/my-subscription",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"my-subscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CancelPlan",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cancel-subscription",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cancel-subscription"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "GetAllInStockProducts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/products/all?page=2&pageSize=25",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products",
+										"all"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "pageSize",
+											"value": "25"
+										}
+									]
+								},
+								"description": "The user is able to view all of the products. An out of stock product should NOT be shown to the user"
+							},
+							"response": []
+						},
+						{
+							"name": "SearchInStockProducts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/products/search?page=1&pageSize=25&search=banana",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "25"
+										},
+										{
+											"key": "search",
+											"value": "banana"
+										},
+										{
+											"key": "maxPrice",
+											"value": "3",
+											"disabled": true
+										},
+										{
+											"key": "brands",
+											"value": "7,2",
+											"disabled": true
+										}
+									]
+								},
+								"description": "The user is able to view all of the products. An out of stock product should NOT be shown to the user"
+							},
+							"response": []
+						},
+						{
+							"name": "GetProductDetailById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/products/90",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products",
+										"90"
+									]
+								},
+								"description": "When a user clicks on one product, the user should be redirected to the detail page of that product, including the description and price (retail_price) of the product. (The user should NOT be able to see the actual quantity of any items)."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cart",
+					"item": [
+						{
+							"name": "GetCartItems",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCart",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": 12,\n    \"quantity\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/update-cart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"update-cart"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "Preview Checkout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/orders/preview",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"preview"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PlaceNewOrder",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllOrders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/orders/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetOrderDetail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/orders/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrderStatus - Cancel Completed Order",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/orders/10/cancel?returnByECash=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"10",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "returnByECash",
+											"value": "true"
+										}
+									]
+								},
+								"description": "1. The seller should be able to complete a “Processing” order by updating its status to “Completed”.\n2. The seller should also be able to cancel an order for some reasons, such as that the product is sold out locally, by updating the order status to “Canceled”. If so, the item’s stock should be incremented accordingly to offset the auto-deduction\nthat took place when the order is first placed. However, a “Canceled” order cannot be completed, nor can a “Completed” order be canceled."
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrderStatus - Cancel Processing  Order",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/orders/1/cancel?returnByECash=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"1",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "returnByECash",
+											"value": "true"
+										}
+									]
+								},
+								"description": "1. The seller should be able to complete a “Processing” order by updating its status to “Completed”.\n2. The seller should also be able to cancel an order for some reasons, such as that the product is sold out locally, by updating the order status to “Canceled”. If so, the item’s stock should be incremented accordingly to offset the auto-deduction\nthat took place when the order is first placed. However, a “Canceled” order cannot be completed, nor can a “Completed” order be canceled."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OrderTemplate",
+					"item": [
+						{
+							"name": "GetAllOrderTemplates",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/order-template",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order-template"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateOrderTemplate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Biweekly Order\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/order-template",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order-template"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewOrderTemplate",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/order-template/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order-template",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrderTemplate",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"templateId\": 1,\n    \"productId\": 659,\n    \"quantity\": 1,\n    \"substitutionPreferenceId\": 652\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/order-template/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"order-template",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OrderTemplatePreviewCheckout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/orders/order-template/1/preview-checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"order-template",
+										"1",
+										"preview-checkout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CheckoutTemplate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/orders/order-template/1/checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"order-template",
+										"1",
+										"checkout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Watchlist",
+					"item": [
+						{
+							"name": "GetAllWatchlist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/watchlist/products/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"watchlist",
+										"products",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddToWatchlist",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/watchlist/product/77",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"watchlist",
+										"product",
+										"77"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RemoveFromWatchlist",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/watchlist/product/90",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"watchlist",
+										"product",
+										"90"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ECash",
+					"item": [
+						{
+							"name": "GetCash",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/eCash",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"eCash"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Savings",
+					"item": [
+						{
+							"name": "GetTotalSavings",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ProductReferral",
+					"item": [
+						{
+							"name": "SendRefferal",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"referredId\": 5,\n    \"productId\": 12\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/referral",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"referral"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Stats",
+					"item": [
+						{
+							"name": "MostFrequentlyPurchasedProduct",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/products/frequent/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products",
+										"frequent",
+										"3"
+									]
+								},
+								"description": "The user should be able to view their top 3 most frequently purchased items.\n(excluding canceled order, use item ID as tie breaker) ["
+							},
+							"response": []
+						},
+						{
+							"name": "MostRecentlyPurchasedProduct",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/products/recent/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"products",
+										"recent",
+										"3"
+									]
+								},
+								"description": "The user can also view their top 3 most recently purchased items. (excluding canceled order, use item id as tie breaker)"
+							},
+							"response": []
+						},
+						{
+							"name": "AllStatistics",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/statistics",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"statistics"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwicGVybWlzc2lvbnMiOlt7ImF1dGhvcml0eSI6InVzZXJfd3JpdGUifSx7ImF1dGhvcml0eSI6InVzZXJfdXBkYXRlIn0seyJhdXRob3JpdHkiOiJ1c2VyX3JlYWQifSx7ImF1dGhvcml0eSI6InVzZXJfZGVsZXRlIn1dLCJpZCI6M30.hYUZVJ0UPyboxsi887YR0IyEpNRzXQv9EQu_ADahfHA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "GetAllProducts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/products/all?page=2&pageSize=25",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"products",
+										"all"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "pageSize",
+											"value": "25"
+										}
+									]
+								},
+								"description": "The admin is able to view all of the products. An out of stock product should be shown to the admin"
+							},
+							"response": []
+						},
+						{
+							"name": "SearchAllProducts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/products/search?page=1&pageSize=25&search=yogurt",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"products",
+										"search"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "25"
+										},
+										{
+											"key": "search",
+											"value": "yogurt"
+										},
+										{
+											"key": "maxPrice",
+											"value": "4",
+											"disabled": true
+										},
+										{
+											"key": "brands",
+											"value": "7,22",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProductDetailById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateProduct",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"cherry pie\",\n    \"description\": \"black cherry\",\n    \"wholesalePrice\": 300000,\n    \"retailPrice\": 5,\n    \"quantity\": 200000000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/admin/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateAProduct",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"banana pie\",\n    \"description\": \"made with real banana\",\n    \"wholesalePrice\": 3,\n    \"retailPrice\": 5,\n    \"quantity\": 1000,\n    \"categoryId\": 3,\n    \"brandId\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/admin/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"products"
+									]
+								},
+								"description": "The seller should be able to add products. A product has fields including description, wholesale_price, retail_price and stock’s quantity.\n1. The wholesale price is the price which the seller paid for the product.\n2. The retail price is the price which customers pay for the product."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "GetAllOrders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/orders/all?page=1&pageSize=5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"orders",
+										"all"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "5"
+										}
+									]
+								},
+								"description": "Order information, with details of order placed time, users who placed the order and the order status (Processing, Processing, Canceled).\n\n1. A page should only have 5 orders (Bonus)\n2. The seller can click and see information regarding any single order, completed with the items involved in the order."
+							},
+							"response": []
+						},
+						{
+							"name": "GetOrderDetail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/orders/17",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"orders",
+										"17"
+									]
+								},
+								"description": "Listing information, the current products that are listed to sell. When the seller clicks on one product, the seller should be redirected to the detail page of that product, including the description, wholesale_price, retail_price and stock’s quantity of the product; the seller should be able to modify the wholesale_price, retail_price, description and quantity of a product."
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrderStatus - Cancel Completed Order",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/orders/17/cancel?returnByECash=true",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"orders",
+										"17",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "returnByECash",
+											"value": "true"
+										}
+									]
+								},
+								"description": "1. The seller should be able to complete a “Processing” order by updating its status to “Completed”.\n2. The seller should also be able to cancel an order for some reasons, such as that the product is sold out locally, by updating the order status to “Canceled”. If so, the item’s stock should be incremented accordingly to offset the auto-deduction\nthat took place when the order is first placed. However, a “Canceled” order cannot be completed, nor can a “Completed” order be canceled."
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrderStatus - Cancel Processing  Order",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/orders/15/cancel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"orders",
+										"15",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "returnByECash",
+											"value": "true",
+											"disabled": true
+										}
+									]
+								},
+								"description": "1. The seller should be able to complete a “Processing” order by updating its status to “Completed”.\n2. The seller should also be able to cancel an order for some reasons, such as that the product is sold out locally, by updating the order status to “Canceled”. If so, the item’s stock should be incremented accordingly to offset the auto-deduction\nthat took place when the order is first placed. However, a “Canceled” order cannot be completed, nor can a “Completed” order be canceled."
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrderStatus - Complete Cancelled Order",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/orders/17/complete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"orders",
+										"17",
+										"complete"
+									]
+								},
+								"description": "1. The seller should be able to complete a “Processing” order by updating its status to “Completed”.\n2. The seller should also be able to cancel an order for some reasons, such as that the product is sold out locally, by updating the order status to “Canceled”. If so, the item’s stock should be incremented accordingly to offset the auto-deduction\nthat took place when the order is first placed. However, a “Canceled” order cannot be completed, nor can a “Completed” order be canceled."
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOrderStatus - Complete Processing Order",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/orders/16/complete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"orders",
+										"16",
+										"complete"
+									]
+								},
+								"description": "1. The seller should be able to complete a “Processing” order by updating its status to “Completed”.\n2. The seller should also be able to cancel an order for some reasons, such as that the product is sold out locally, by updating the order status to “Canceled”. If so, the item’s stock should be incremented accordingly to offset the auto-deduction\nthat took place when the order is first placed. However, a “Canceled” order cannot be completed, nor can a “Completed” order be canceled."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Stats",
+					"item": [
+						{
+							"name": "MostProfitableProduct - Top 3",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/products/profit/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"products",
+										"profit",
+										"3"
+									]
+								},
+								"description": "The seller can see which 3 products are the most popular/sold (excluding canceled and ongoing order)."
+							},
+							"response": []
+						},
+						{
+							"name": "MostPopularProduct - Top 3",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/products/popular/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"products",
+										"popular",
+										"3"
+									]
+								},
+								"description": "The seller can also see the amount of total items sold successfully (excluding canceled and ongoing order)."
+							},
+							"response": []
+						},
+						{
+							"name": "AllStatistics",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/statistics",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"statistics"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInBlcm1pc3Npb25zIjpbeyJhdXRob3JpdHkiOiJhZG1pbl9yZWFkIn0seyJhdXRob3JpdHkiOiJhZG1pbl93cml0ZSJ9LHsiYXV0aG9yaXR5IjoiYWRtaW5fZGVsZXRlIn0seyJhdXRob3JpdHkiOiJhZG1pbl91cGRhdGUifV0sImlkIjoyfQ.gCcnFX8W0YqDi5Ef70tpphM5ttxV_Jq67DqvJVQdQS0",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
